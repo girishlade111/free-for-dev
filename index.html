@@ -248,6 +248,36 @@
                 text-transform: uppercase;
             }
         }
+
+        .search-box {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--bg-section);
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .search-box::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        .no-results.visible {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -256,19 +286,26 @@
         <p class="subtitle">Always-free services for developers and DevOps. No credit card required.</p>
     </header>
 
+    <input type="text" id="search" class="search-box" placeholder="Search services..." aria-label="Search services">
+
     <nav class="toc">
         <h2>Contents</h2>
         <ul>
             <li><a href="#cloud">Major Cloud Providers</a></li>
-            <li><a href="#cicd">CI/CD</a></li>
+            <li><a href="#hosting">Hosting & Deployment</a></li>
+            <li><a href="#cicd">CI/CD & Automation</a></li>
             <li><a href="#databases">Databases</a></li>
-            <li><a href="#dns">DNS</a></li>
-            <li><a href="#hosting">Web Hosting</a></li>
+            <li><a href="#storage">Storage & File Services</a></li>
+            <li><a href="#dns">DNS & Networking</a></li>
             <li><a href="#monitoring">Monitoring & Logging</a></li>
+            <li><a href="#auth">Authentication & Identity</a></li>
+            <li><a href="#messaging">Messaging & Realtime</a></li>
             <li><a href="#email">Email</a></li>
-            <li><a href="#storage">Storage</a></li>
+            <li><a href="#devtools">Developer Tools & APIs</a></li>
         </ul>
     </nav>
+
+    <p id="no-results" class="no-results">No services found matching your search.</p>
 
     <main>
         <section id="cloud">
@@ -297,12 +334,24 @@
                         <td class="service-name"><a href="https://www.oracle.com/cloud/free/" class="service-link" target="_blank" rel="noopener">Oracle Cloud</a></td>
                         <td data-label="Free Tier">Always Free: 2 AMD VMs, 4 ARM VMs, 200GB storage, 10TB bandwidth</td>
                     </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://www.digitalocean.com" class="service-link" target="_blank" rel="noopener">DigitalOcean</a></td>
+                        <td data-label="Free Tier">$200 credit for 60 days (new accounts)</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://www.ibm.com/cloud/free" class="service-link" target="_blank" rel="noopener">IBM Cloud</a></td>
+                        <td data-label="Free Tier">Always Free: 25 services including Lite tier</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://www.alibabacloud.com/free" class="service-link" target="_blank" rel="noopener">Alibaba Cloud</a></td>
+                        <td data-label="Free Tier">$300 credit for 30 days (new accounts)</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
 
         <section id="cicd">
-            <h2><span class="category-icon">🔄</span> <a href="#cicd">CI/CD</a></h2>
+            <h2><span class="category-icon">🔄</span> <a href="#cicd">CI/CD & Automation</a></h2>
             <table>
                 <thead>
                     <tr>
@@ -327,6 +376,18 @@
                         <td class="service-name"><a href="https://azure.microsoft.com/services/devops" class="service-link" target="_blank" rel="noopener">Azure DevOps</a></td>
                         <td data-label="Free Tier">1800 min/month</td>
                     </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://woodpecker-ci.org" class="service-link" target="_blank" rel="noopener">Woodpecker CI</a></td>
+                        <td data-label="Free Tier">Unlimited (self-hosted)</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://drone.io" class="service-link" target="_blank" rel="noopener">Drone CI</a></td>
+                        <td data-label="Free Tier">Unlimited (self-hosted)</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://semaphoreci.com" class="service-link" target="_blank" rel="noopener">Semaphore CI</a></td>
+                        <td data-label="Free Tier">1000 credits/month</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
@@ -343,7 +404,7 @@
                 <tbody>
                     <tr>
                         <td class="service-name"><a href="https://neon.tech" class="service-link" target="_blank" rel="noopener">Neon</a> (PostgreSQL)</td>
-                        <td data-label="Free Tier">512MB storage, 1 project</td>
+                        <td data-label="Free Tier">512MB storage, branching, serverless</td>
                     </tr>
                     <tr>
                         <td class="service-name"><a href="https://supabase.com" class="service-link" target="_blank" rel="noopener">Supabase</a> (PostgreSQL)</td>
@@ -351,11 +412,11 @@
                     </tr>
                     <tr>
                         <td class="service-name"><a href="https://www.mongodb.com/cloud/atlas" class="service-link" target="_blank" rel="noopener">MongoDB Atlas</a></td>
-                        <td data-label="Free Tier">512MB cluster</td>
+                        <td data-label="Free Tier">512MB cluster, shared RAM</td>
                     </tr>
                     <tr>
                         <td class="service-name"><a href="https://redis.io/cloud" class="service-link" target="_blank" rel="noopener">Redis Cloud</a></td>
-                        <td data-label="Free Tier">30MB</td>
+                        <td data-label="Free Tier">30MB, 1 database</td>
                     </tr>
                     <tr>
                         <td class="service-name"><a href="https://planetscale.com" class="service-link" target="_blank" rel="noopener">PlanetScale</a> (MySQL)</td>
@@ -367,7 +428,15 @@
                     </tr>
                     <tr>
                         <td class="service-name"><a href="https://tidb.cloud" class="service-link" target="_blank" rel="noopener">TiDB</a></td>
-                        <td data-label="Free Tier">5GB storage</td>
+                        <td data-label="Free Tier">5GB storage, serverless</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://www.digitalocean.com/products/managed-databases" class="service-link" target="_blank" rel="noopener">DigitalOcean Managed DB</a></td>
+                        <td data-label="Free Tier">1GB disk, 1CPU (new accounts)</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://appwrite.io" class="service-link" target="_blank" rel="noopener">Appwrite</a> (Self-hosted)</td>
+                        <td data-label="Free Tier">Unlimited projects (self-hosted)</td>
                     </tr>
                 </tbody>
             </table>
@@ -396,7 +465,7 @@
         </section>
 
         <section id="hosting">
-            <h2><span class="category-icon">🚀</span> <a href="#hosting">Web Hosting</a></h2>
+            <h2><span class="category-icon">🚀</span> <a href="#hosting">Hosting & Deployment</a></h2>
             <table>
                 <thead>
                     <tr>
@@ -407,7 +476,7 @@
                 <tbody>
                     <tr>
                         <td class="service-name"><a href="https://vercel.com" class="service-link" target="_blank" rel="noopener">Vercel</a></td>
-                        <td data-label="Free Tier">100GB bandwidth, 100 hours build</td>
+                        <td data-label="Free Tier">100GB bandwidth, 6K builds/mo, Hobby plan</td>
                     </tr>
                     <tr>
                         <td class="service-name"><a href="https://netlify.com" class="service-link" target="_blank" rel="noopener">Netlify</a></td>
@@ -420,6 +489,22 @@
                     <tr>
                         <td class="service-name"><a href="https://pages.github.com" class="service-link" target="_blank" rel="noopener">GitHub Pages</a></td>
                         <td data-label="Free Tier">1GB storage, 100GB bandwidth</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://render.com" class="service-link" target="_blank" rel="noopener">Render</a></td>
+                        <td data-label="Free Tier">750 hours, 512MB RAM, sleep after 15min</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://fly.io" class="service-link" target="_blank" rel="noopener">Fly.io</a></td>
+                        <td data-label="Free Tier">3 shared VMs, 160GB disk, 1GB bandwidth</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://railway.app" class="service-link" target="_blank" rel="noopener">Railway</a></td>
+                        <td data-label="Free Tier">500 hours, 1GB disk, 100MB RAM</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://cyclic.sh" class="service-link" target="_blank" rel="noopener">Cyclic</a></td>
+                        <td data-label="Free Tier">Unlimited projects, 1GB bandwidth</td>
                     </tr>
                 </tbody>
             </table>
@@ -518,10 +603,189 @@
                 </tbody>
             </table>
         </section>
+
+        <section id="auth">
+            <h2><span class="category-icon">🔐</span> <a href="#auth">Authentication & Identity</a></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Free Tier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="service-name"><a href="https://clerk.com" class="service-link" target="_blank" rel="noopener">Clerk</a></td>
+                        <td data-label="Free Tier">5k monthly active users</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://supabase.com/auth" class="service-link" target="_blank" rel="noopener">Supabase Auth</a></td>
+                        <td data-label="Free Tier">Unlimited users, 50k monthly active</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://firebase.google.com/auth" class="service-link" target="_blank" rel="noopener">Firebase Auth</a></td>
+                        <td data-label="Free Tier">Unlimited users, auth included in Spark plan</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://auth0.com" class="service-link" target="_blank" rel="noopener">Auth0</a></td>
+                        <td data-label="Free Tier">7k monthly active users</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://www.keycloak.org" class="service-link" target="_blank" rel="noopener">Keycloak</a> (Self-hosted)</td>
+                        <td data-label="Free Tier">Unlimited users (self-hosted)</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://github.com/ory/kratos" class="service-link" target="_blank" rel="noopener">Ory Kratos</a> (Self-hosted)</td>
+                        <td data-label="Free Tier">Unlimited users (self-hosted)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="messaging">
+            <h2><span class="category-icon">💬</span> <a href="#messaging">Messaging & Realtime</a></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Free Tier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="service-name"><a href="https://pusher.com/channels" class="service-link" target="_blank" rel="noopener">Pusher Channels</a></td>
+                        <td data-label="Free Tier">200 connections, 100k messages/day</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://ably.com" class="service-link" target="_blank" rel="noopener">Ably</a></td>
+                        <td data-label="Free Tier">6M messages/month, 100 peak connections</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://www.getstream.io" class="service-link" target="_blank" rel="noopener">Stream</a></td>
+                        <td data-label="Free Tier">3M stream operations/month</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://appwrite.io/realtime" class="service-link" target="_blank" rel="noopener">Appwrite Realtime</a></td>
+                        <td data-label="Free Tier">Included in free tier</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://www.cloudamqp.com" class="service-link" target="_blank" rel="noopener">CloudAMQP</a></td>
+                        <td data-label="Free Tier">1M messages/month (Lobby plan)</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://www.rabbitmq.com" class="service-link" target="_blank" rel="noopener">RabbitMQ</a> (Self-hosted)</td>
+                        <td data-label="Free Tier">Unlimited (self-hosted)</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://nats.io" class="service-link" target="_blank" rel="noopener">NATS</a> (Self-hosted)</td>
+                        <td data-label="Free Tier">Unlimited (self-hosted)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="devtools">
+            <h2><span class="category-icon">🛠️</span> <a href="#devtools">Developer Tools & APIs</a></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Free Tier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="service-name"><a href="https://ngrok.com" class="service-link" target="_blank" rel="noopener">ngrok</a></td>
+                        <td data-label="Free Tier">1 tunnel, 1 process, 40k requests/month</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://beeceptor.com" class="service-link" target="_blank" rel="noopener">Beeceptor</a></td>
+                        <td data-label="Free Tier">Unlimited endpoints, 2k req/month</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://requestbin.com" class="service-link" target="_blank" rel="noopener">RequestBin</a></td>
+                        <td data-label="Free Tier">20 bins, 50 requests/bin</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://webhook.site" class="service-link" target="_blank" rel="noopener">Webhook.site</a></td>
+                        <td data-label="Free Tier">3 private tubes, 1000 logs</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://httprelay.io" class="service-link" target="_blank" rel="noopener">HTTPRelay</a></td>
+                        <td data-label="Free Tier">Unlimited webhooks</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://pipedream.net" class="service-link" target="_blank" rel="noopener">Pipedream</a></td>
+                        <td data-label="Free Tier">2 tasks/hour, 1GB storage</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://stackblitz.com" class="service-link" target="_blank" rel="noopener">StackBlitz</a></td>
+                        <td data-label="Free Tier">Unlimited public projects</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://replit.com" class="service-link" target="_blank" rel="noopener">Replit</a></td>
+                        <td data-label="Free Tier">500MB storage, 2 vCPU, always-on</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://glitch.com" class="service-link" target="_blank" rel="noopener">Glitch</a></td>
+                        <td data-label="Free Tier">1000 hours/month, 128MB RAM</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </main>
 
     <footer>
         <p>Curated for developers. No credit card required. | <a href="https://github.com" target="_blank" rel="noopener">Submit changes</a></p>
     </footer>
+
+    <script>
+        const searchInput = document.getElementById('search');
+        const sections = document.querySelectorAll('section');
+        const tocLinks = document.querySelectorAll('.toc a');
+        const noResults = document.getElementById('no-results');
+
+        function filterServices(query) {
+            query = query.toLowerCase().trim();
+            let hasResults = false;
+
+            sections.forEach(section => {
+                const rows = section.querySelectorAll('tbody tr');
+                let sectionHasMatch = false;
+
+                rows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    const matches = query === '' || text.includes(query);
+                    row.classList.toggle('hidden', !matches);
+                    if (matches) {
+                        sectionHasMatch = true;
+                        hasResults = true;
+                    }
+                });
+
+                section.classList.toggle('hidden', !sectionHasMatch);
+            });
+
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                const targetSection = document.querySelector(href);
+                const isVisible = !targetSection.classList.contains('hidden');
+                link.style.display = isVisible ? '' : 'none';
+            });
+
+            noResults.classList.toggle('visible', !hasResults && query !== '');
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            filterServices(e.target.value);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && document.activeElement !== searchInput) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
+    </script>
 </body>
 </html>
