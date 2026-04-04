@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free for Dev - Always Free Services for Developers</title>
+    <meta name="description" content="A curated directory of free services with always-free tiers for developers and DevOps: Cloud Providers, CI/CD, Databases, DNS, Hosting, Monitoring, Email, and Storage.">
+    <style>
+        :root {
+            --bg: #fafafa;
+            --bg-section: #ffffff;
+            --text: #1a1a1a;
+            --text-secondary: #525252;
+            --border: #e5e5e5;
+            --accent: #0969da;
+            --accent-hover: #0550ae;
+            --code-bg: #f6f8fa;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0d1117;
+                --bg-section: #161b22;
+                --text: #e6e6e6;
+                --text-secondary: #8b8b8b;
+                --border: #30363d;
+                --accent: #58a6ff;
+                --accent-hover: #79c0ff;
+                --code-bg: #21262d;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .toc {
+            background: var(--bg-section);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .toc h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+        }
+
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            background: var(--bg-section);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        h2 a:hover {
+            color: var(--accent);
+        }
+
+        .category-icon {
+            font-size: 1.25rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 0.7rem 0.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .service-name {
+            font-weight: 500;
+        }
+
+        .service-link {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .service-link:hover {
+            text-decoration: underline;
+        }
+
+        .free-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.15rem 0.5rem;
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            section {
+                padding: 1rem;
+            }
+
+            .toc ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            table {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tr {
+                display: block;
+                padding: 0.75rem 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            tr:last-child {
+                border-bottom: none;
+            }
+
+            td {
+                display: block;
+                padding: 0.25rem 0;
+                border: none;
+            }
+
+            td:first-child {
+                font-weight: 500;
+            }
+
+            td::before {
+                content: attr(data-label) ": ";
+                color: var(--text-secondary);
+                font-size: 0.8rem;
+                text-transform: uppercase;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Free for Dev</h1>
+        <p class="subtitle">Always-free services for developers and DevOps. No credit card required.</p>
+    </header>
+
+    <nav class="toc">
+        <h2>Contents</h2>
+        <ul>
+            <li><a href="#cloud">Major Cloud Providers</a></li>
+            <li><a href="#cicd">CI/CD</a></li>
+            <li><a href="#databases">Databases</a></li>
+            <li><a href="#dns">DNS</a></li>
+            <li><a href="#hosting">Web Hosting</a></li>
+            <li><a href="#monitoring">Monitoring & Logging</a></li>
+            <li><a href="#email">Email</a></li>
+            <li><a href="#storage">Storage</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="cloud">
+            <h2><span class="category-icon">☁️</span> <a href="#cloud">Major Cloud Providers</a></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Free Tier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="service-name"><a href="https://aws.amazon.com/free/" class="service-link" target="_blank" rel="noopener">AWS</a></td>
+                        <td data-label="Free Tier">$100 credit for 12 months. Always Free: Lambda (1M requests/mo), S3 (5GB), DynamoDB (25GB)</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://cloud.google.com/free" class="service-link" target="_blank" rel="noopener">Google Cloud</a></td>
+                        <td data-label="Free Tier">$300 credit for 90 days. Always Free: Cloud Run (180k vCPU-seconds), Firestore (1GB), BigQuery (10GB)</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://azure.microsoft.com/en-us/free" class="service-link" target="_blank" rel="noopener">Azure</a></td>
+                        <td data-label="Free Tier">$200 credit for 30 days. Always Free: 40+ services including App Service, Functions, Cosmos DB</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://www.oracle.com/cloud/free/" class="service-link" target="_blank" rel="noopener">Oracle Cloud</a></td>
+                        <td data-label="Free Tier">Always Free: 2 AMD VMs, 4 ARM VMs, 200GB storage, 10TB bandwidth</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="cicd">
+            <h2><span class="category-icon">🔄</span> <a href="#cicd">CI/CD</a></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Free Tier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="service-name"><a href="https://github.com/features/actions" class="service-link" target="_blank" rel="noopener">GitHub Actions</a></td>
+                        <td data-label="Free Tier">2000 min/month (unlimited for public repos)</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://gitlab.com" class="service-link" target="_blank" rel="noopener">GitLab CI</a></td>
+                        <td data-label="Free Tier">400 min/month, 10GB storage</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://circleci.com" class="service-link" target="_blank" rel="noopener">CircleCI</a></td>
+                        <td data-label="Free Tier">2500 credits/month (1 concurrency)</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://azure.microsoft.com/services/devops" class="service-link" target="_blank" rel="noopener">Azure DevOps</a></td>
+                        <td data-label="Free Tier">1800 min/month</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="databases">
+            <h2><span class="category-icon">🗄️</span> <a href="#databases">Databases</a></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Free Tier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="service-name"><a href="https://neon.tech" class="service-link" target="_blank" rel="noopener">Neon</a> (PostgreSQL)</td>
+                        <td data-label="Free Tier">512MB storage, 1 project</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://supabase.com" class="service-link" target="_blank" rel="noopener">Supabase</a> (PostgreSQL)</td>
+                        <td data-label="Free Tier">500MB DB, 2GB storage, 500MB files</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://www.mongodb.com/cloud/atlas" class="service-link" target="_blank" rel="noopener">MongoDB Atlas</a></td>
+                        <td data-label="Free Tier">512MB cluster</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://redis.io/cloud" class="service-link" target="_blank" rel="noopener">Redis Cloud</a></td>
+                        <td data-label="Free Tier">30MB</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://planetscale.com" class="service-link" target="_blank" rel="noopener">PlanetScale</a> (MySQL)</td>
+                        <td data-label="Free Tier">1 branch, 5GB storage</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://www.cockroachlabs.com/cloud" class="service-link" target="_blank" rel="noopener">CockroachDB</a></td>
+                        <td data-label="Free Tier">5GB storage, 10M request units</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://tidb.cloud" class="service-link" target="_blank" rel="noopener">TiDB</a></td>
+                        <td data-label="Free Tier">5GB storage</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="dns">
+            <h2><span class="category-icon">🌐</span> <a href="#dns">DNS</a></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Free Tier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="service-name"><a href="https://www.cloudflare.com" class="service-link" target="_blank" rel="noopener">Cloudflare</a></td>
+                        <td data-label="Free Tier">Unlimited domains, unlimited queries</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://aws.amazon.com/route53" class="service-link" target="_blank" rel="noopener">AWS Route 53</a></td>
+                        <td data-label="Free Tier">25 hosted zones</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="hosting">
+            <h2><span class="category-icon">🚀</span> <a href="#hosting">Web Hosting</a></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Free Tier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="service-name"><a href="https://vercel.com" class="service-link" target="_blank" rel="noopener">Vercel</a></td>
+                        <td data-label="Free Tier">100GB bandwidth, 100 hours build</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://netlify.com" class="service-link" target="_blank" rel="noopener">Netlify</a></td>
+                        <td data-label="Free Tier">100GB bandwidth, 300 min build</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://pages.cloudflare.com" class="service-link" target="_blank" rel="noopener">Cloudflare Pages</a></td>
+                        <td data-label="Free Tier">500GB bandwidth, unlimited builds</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://pages.github.com" class="service-link" target="_blank" rel="noopener">GitHub Pages</a></td>
+                        <td data-label="Free Tier">1GB storage, 100GB bandwidth</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="monitoring">
+            <h2><span class="category-icon">📊</span> <a href="#monitoring">Monitoring & Logging</a></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Free Tier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="service-name"><a href="https://grafana.com/cloud" class="service-link" target="_blank" rel="noopener">Grafana Cloud</a></td>
+                        <td data-label="Free Tier">10k metrics, 50GB logs, 14-day retention</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://datadoghq.com" class="service-link" target="_blank" rel="noopener">Datadog</a></td>
+                        <td data-label="Free Tier">1 host, 1M events/month</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://sentry.io" class="service-link" target="_blank" rel="noopener">Sentry</a></td>
+                        <td data-label="Free Tier">5k errors/month</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://signoz.io" class="service-link" target="_blank" rel="noopener">SigNoz</a> (Open Source)</td>
+                        <td data-label="Free Tier">5GB ingestion (self-hosted)</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://openobserve.io" class="service-link" target="_blank" rel="noopener">OpenObserve</a> (Open Source)</td>
+                        <td data-label="Free Tier">5GB ingestion (cloud or self-hosted)</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://axiom.co" class="service-link" target="_blank" rel="noopener">Axiom</a></td>
+                        <td data-label="Free Tier">1GB ingestion</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="email">
+            <h2><span class="category-icon">✉️</span> <a href="#email">Email</a></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Free Tier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="service-name"><a href="https://www.mailgun.com" class="service-link" target="_blank" rel="noopener">Mailgun</a></td>
+                        <td data-label="Free Tier">5000 emails/month</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://aws.amazon.com/ses" class="service-link" target="_blank" rel="noopener">AWS SES</a></td>
+                        <td data-label="Free Tier">3000 emails/month</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://resend.com" class="service-link" target="_blank" rel="noopener">Resend</a></td>
+                        <td data-label="Free Tier">3000 emails/month</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="storage">
+            <h2><span class="category-icon">💾</span> <a href="#storage">Storage</a></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Free Tier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="service-name"><a href="https://developers.cloudflare.com/r2" class="service-link" target="_blank" rel="noopener">Cloudflare R2</a></td>
+                        <td data-label="Free Tier">10GB storage, 1M class A, 10M class B ops</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://www.backblaze.com/cloud-storage" class="service-link" target="_blank" rel="noopener">Backblaze B2</a></td>
+                        <td data-label="Free Tier">10GB storage</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://aws.amazon.com/s3" class="service-link" target="_blank" rel="noopener">AWS S3</a></td>
+                        <td data-label="Free Tier">5GB (12 months)</td>
+                    </tr>
+                    <tr>
+                        <td class="service-name"><a href="https://wasabi.com" class="service-link" target="_blank" rel="noopener">Wasabi</a></td>
+                        <td data-label="Free Tier">1GB (requires payment method)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>Curated for developers. No credit card required. | <a href="https://github.com" target="_blank" rel="noopener">Submit changes</a></p>
+    </footer>
+</body>
+</html>
